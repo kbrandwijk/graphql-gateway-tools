@@ -6,7 +6,7 @@ A set of tools to help you build a GraphQL Gateway using remote schemas and sche
 
 A higher order helper for creating a merged schema. It makes it easy to compose a schema, by providing methods to add remote schema endpoints, local GraphQL schemas, partial type definitions, and multiple resolver functions.
 
-```
+```ts
 const schemaGenerator = new SchemaGenerator()
 
 // Create a remoteExecutableSchema by specifying the endpoint address
@@ -40,7 +40,7 @@ See the [examples](./examples) folder for a complete example (coming soon).
 
 If you add an Interface Types to your merged schema, you have to manually add the `__typeName` field to your resolvers. This helper function makes it easy to do so.
 
-```
+```ts
 // Assuming you have created a remote schema mySchema with types Car and Boat
 
 const typeDefs = `
@@ -73,14 +73,13 @@ const schema = mergeSchemas({
         }
     })
 })
-
 ```
 
 ## addFields(mergeInfo: MergeInfo, fields: Array<FieldNode | string>)
 
 A generic helper for adding fields to the resolveInfo, by passing in a fieldName, or a complete FieldNode.
 
-```
+```ts
 const myField: FieldNode = { kind: 'Field', name: { kind: 'Name', value: 'myField' } }
 const anotherField: 'anotherField'
 

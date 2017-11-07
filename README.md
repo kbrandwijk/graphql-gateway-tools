@@ -2,6 +2,8 @@
 
 A set of tools to help you build a GraphQL Gateway using remote schemas and schema stitching.
 
+[![https://nodei.co/npm/graphql-gateway-tools.png?downloads=false&downloadRank=true&stars=true](https://nodei.co/npm/graphql-gateway-tools.png?downloads=false&downloadRank=true&stars=true)](https://www.npmjs.com/package/graphql-gateway-tools)
+
 ## SchemaGenerator
 
 A higher order helper for creating a merged schema. It makes it easy to compose a schema, by providing methods to add remote schema endpoints, local GraphQL schemas, partial type definitions, and multiple resolver functions.

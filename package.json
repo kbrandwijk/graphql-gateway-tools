@@ -1,0 +1,42 @@
+{
+  "name": "graphql-gateway-tools",
+  "version": "0.1.0",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "rm -rf dist && tsc -d",
+    "start": "./node_modules/.bin/ts-node ./test/server.ts"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "GPL-3.0",
+  "author": "Kim Brandwijk <kim.brandwijk@gmail.com>",
+  "homepage": "https://github.com/kbrandwijk/graphql-gateway-tools#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kbrandwijk/graphql-gateway-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kbrandwijk/graphql-gateway-tools/issues"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "graphql": "^0.11.7"
+  },
+  "dependencies": {
+    "apollo-link": "^1.0.0",
+    "apollo-link-http": "^1.1.0",
+    "graphql-tools": "^2.7.2",
+    "lodash": "^4.17.4",
+    "node-fetch": "^1.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.49",
+    "@types/zen-observable": "^0.5.3",
+    "typescript": "^2.6.1",
+    "ts-node": "^3.3.0"
+  }
+}

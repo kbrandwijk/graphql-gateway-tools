@@ -45,6 +45,9 @@ If you add an Interface Types to your merged schema, you have to manually add th
 ```ts
 // Assuming you have created a remote schema mySchema with types Car and Boat
 
+const schemaGenerator = new SchemaGenerator()
+schemaGenerator.registerEndpoint({uri: '...' })
+
 const typeDefs = `
     interface Verhicle {
         maxSpeed: Float
@@ -58,23 +61,25 @@ const typeDefs = `
         allVehicles: [Verhicle]
     }`
 
-const schema = mergeSchemas({
-    schemas: [mySchema],
-    resolvers: mergeInfo => ({
-        Query: {
-            allVehicles: {
-                async resolve(parent, args, context, info){
-                    const newInfo = addTypeNameField(info)
+const allVehiclesresolver = mergeInfo => ({
+    Query: {
+        allVehicles: {
+            async resolve(parent, args, context, info){
+                const newInfo = addTypeNameField(info)
 
-                    const cars = mergeInfo.delegate('query', 'allCars', args, context, info)
-                    const boats = mergeInfo.delgate('query', 'allBoats', args, context, info)
+                const cars = mergeInfo.delegate('query', 'allCars', args, context, info)
+                const boats = mergeInfo.delgate('query', 'allBoats', args, context, info)
 
-                    return [...cars, ...boats]
-                }
+                return [...cars, ...boats]
             }
         }
-    })
+    }
 })
+
+schemaGenerator.registerTypeDefinition(typeDefs)
+schemaGenerator.registerResolver(allVehiclesresolver)
+
+const mergedSchema = schemaGenerator.generateSchema()
 ```
 
 ## addFields(mergeInfo: MergeInfo, fields: Array<FieldNode | string>)
@@ -82,6 +87,7 @@ const schema = mergeSchemas({
 A generic helper for adding fields to the resolveInfo, by passing in a fieldName, or a complete FieldNode.
 
 ```ts
+// Inside a resolver
 const myField: FieldNode = { kind: 'Field', name: { kind: 'Name', value: 'myField' } }
 const anotherField: 'anotherField'
 

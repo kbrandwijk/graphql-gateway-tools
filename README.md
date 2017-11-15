@@ -1,3 +1,12 @@
+## UPDATE: `graphql-gateway-tools` has been abandoned in favor of my new GraphQL Application Framework: [Qewl](https://github.com/kbrandwijk/qewl)
+
+
+
+
+
+
+
+
 # graphql-gateway-tools
 
 A set of tools to help you build a GraphQL Gateway using remote schemas and schema stitching.
